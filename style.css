@@ -6,3 +6,10 @@
   max-height: 400px;
   overflow: auto;
 }
+
+.display { 
+	box-sizing: border-box;
+    width: 100%;
+    
+
+ }

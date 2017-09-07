@@ -7,8 +7,8 @@
   <body ng-app="directoryApp">
     <div class="container">
       <div class="row">
-        <h1>UF Directory App</h1>
-      </div>
+       <h1>UF Directory App</h1>
+      </div> 
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
@@ -20,6 +20,7 @@
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control" placeholder="Search" ng-model="query">  <!--added ng-model--> 
           </div>
+
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
               <tr>
@@ -31,8 +32,10 @@
                <td>{{item.code}}</td>
                <td>{{item.name}}</td>
                <td class="button" ng-click="deleteListing(listings.indexOf(item))"><span class="glyphicon glyphicon-trash"></span></td>
+               
               </tr>
             </table>
+            
           </div>
                <!-- 
 
@@ -49,15 +52,29 @@
               <input type="text" class="form-control" placeholder="Building Address" ng-model="addItem.address">
               <input type="text" class="form-control" placeholder="Longitude" ng-model="addItem.longitude">
               <input type="text" class="form-control" placeholder="Latitude" ng-model="addItem.latitude">
+              <p></p>
               <span  id="addButton" ng-click="addListing()">
-             
-                <a href="#" class="btn btn-info btn-lg">
+                  <a href="#" class="btn btn-info btn-lg">
                   <span class="glyphicon glyphicon-ok"></span> ADD 
                 </a>
+
               </span>
              
             </div>
+
+ <div class="display">
+         
+            <h1>Detailed Information</h1>
+
+            <h2>{{detailedInfo.name}}</h2>
+            <h3>{{detailedInfo.address}}<h3>
+            <h3>{{detailedInfo.coordinates}}<h3>
+          
+            </div>
+
+       </div>   
       
+    
       
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
