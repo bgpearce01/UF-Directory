@@ -1,28 +1,40 @@
-/* Fill out these functions using Mongoose queries*/
+var mongoose = require('mongoose'),
+    config = require('./config'), 
+    listing = require('./ListingSchema.js');
+   
+    mongoose.connect(config.db.uri);
+    
 
 var findLibraryWest = function() {
-  /* 
-    Find the document that contains data corresponding to Library West,
-    then log it to the console. 
-   */
+  listing.findOne({ name: 'Library West' }, function(err, item) {
+    if (err) throw err;
+    console.log(item);
+  });
 };
 var removeCable = function() {
-  /*
-    Find the document with the code 'CABL'. This cooresponds with courses that can only be viewed 
-    on cable TV. Since we live in the 21st century and most courses are now web based, go ahead
-    and remove this listing from your database and log the document to the console. 
-   */
+  listing.findOne({ code: 'CABL' }, function(err, item) {
+    if (err) throw err;
+    item.remove(function(err) {
+      if (err) throw err;
+      console.log(item);
+    });
+  });
 };
 var updatePhelpsMemorial = function() {
-  /*
-    Phelps Memorial Hospital Center's address is incorrect. Find the listing, update it, and then 
-    log the updated document to the console. 
-   */
+  listing.findOne({code: "PHL" }, function(err, item) {
+    if (err) throw err;
+    item.address = 'Gainesville, FL 32603';
+    item.save(function(err) {
+      if (err) throw err;
+      console.log(item);
+    }); 
+  });
 };
 var retrieveAllListings = function() {
-  /* 
-    Retrieve all listings in the database, and log them to the console. 
-   */
+  listing.find({}, function(err, item) {
+    if (err) throw err;
+    console.log(item);
+  });
 };
 
 findLibraryWest();
